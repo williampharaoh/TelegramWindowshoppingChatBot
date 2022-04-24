@@ -10,10 +10,10 @@ data1 = r.json()
 def allshops():
     base_url = 'https://windowshoppingserver.herokuapp.com/shop/All'
     shop = requests.get(base_url).json()
-    sho = 'Name    phoneNumber   Location\n\n\n'
+    sho = 'Name    phoneNumber    Location\n\n\n'
 
     for s in shop:
-        sho =sho+ f'{s["shopName"]}  {s["phoneNumber"]}  {s["location"]} \n'
+        sho =sho+ f'{s["shopName"]}    {s["phoneNumber"]}    {s["location"]} \n'
 
     return sho
 
