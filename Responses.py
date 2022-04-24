@@ -53,6 +53,9 @@ def sample_responses(input_text):
         
         if "groceries" in user_message:
             return (dataStr())
+
+        if 'shop' in user_message:
+            return (allshops())
      
 
     
