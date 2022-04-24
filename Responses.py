@@ -7,6 +7,28 @@ r = requests.get('https://windowshoppingserver.herokuapp.com/product/All')
 print(r)
 data1 = r.json()
 
+def allshops():
+    base_url = 'https://windowshoppingserver.herokuapp.com/shop/All'
+    shop = requests.get(base_url).json()
+    sho = 'name   location\n\n'
+
+    for s in shop:
+        sho =sho+ f'{s["shopName"]} {s["location"]}\n'
+
+    return sho
+
+def dataStr():
+    base_url = 'https://windowshoppingserver.herokuapp.com/product/All'
+    data = requests.get(base_url).json()
+    # print(data)
+    dat = 'name     price       description     quantity        Shop\n\n'
+
+    for product in data:
+        dat =dat+ f'{product["Name"]}       {product["Price"]}        {product["Description"]}      {product["Quantity"]}        {product["Shop"]}\n'
+        print(dat)
+
+    return dat
+
 mother=[]
 for X in data1:
     pname=X['Name']
