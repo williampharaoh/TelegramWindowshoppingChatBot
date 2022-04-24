@@ -1,5 +1,6 @@
 
 from datetime import datetime
+import pandas as pd  
 from itertools import product
 import requests
 
@@ -64,7 +65,8 @@ def sample_responses(input_text):
             datr = 'name     price       description     quantity        Shop\n\n'
 
             for product in firstThree:
-                datr =datr+ f'{product["Name"]}       {product["Price"]}        {product["Description"]}      {product["Quantity"]}        {product["Shop"]}\n'
+                
+                #datr =datr+ f'{product["Name"]}       {product["Price"]}        {product["Description"]}      {product["Quantity"]}        {product["Shop"]}\n'
             
             return str(datr)
 
