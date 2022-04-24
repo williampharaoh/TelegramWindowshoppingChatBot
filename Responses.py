@@ -1,7 +1,5 @@
 
 from datetime import datetime
-from tokenize import Name
-import pandas as pd  
 from itertools import product
 import requests
 
@@ -66,11 +64,9 @@ def sample_responses(input_text):
             datr = 'name     price       description     quantity        Shop\n\n'
 
             for product in firstThree:
-                datr= [{'Name':{product["Name"]},'Price':{product["Price"]},'Description':{product["Description"]}, 'Quantity':{product["Quantity"]},'Shop': {product["Shop"]}}]
-                dframe= pd.DataFrame(datr)
-                #datr =datr+ f'{product["Name"]}       {product["Price"]}        {product["Description"]}      {product["Quantity"]}        {product["Shop"]}\n'
-            return str(dframe)
-            #return str(datr)
+                datr =datr+ f'{product["Name"]}       {product["Price"]}        {product["Description"]}      {product["Quantity"]}        {product["Shop"]}\n'
+            
+            return str(datr)
 
 
         if not filtered_arr:
