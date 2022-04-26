@@ -63,30 +63,7 @@ def sample_responses(input_text):
     if 'shops' in user_message:
         return (allshops())
      
-    if shopMother:
-            shopd = 'this is '
-            dtr = 'products of this shop are \nName     quantity  price\n'
-
-            sortedShop=sorted(filteredShop_arr, key=lambda x: x['Shop'])
-            
-            for w in sortedShop:
-                shopd = shopd + f'{w["shop"]} located in {w["location"]} contact: {w["phoneNumber"]}'
-                dtr = dtr +  f'{w["Name"]}       {w["Quantity"]}       {w["Price"]}\n'
-
-            msg.body(dtr)
-
-                # checking products for a given shop
-
-
-           
-            
-            print("filteredshop array is")
-            print(sortedShop)
-            
-
-            print("p name on shop")
-            # print(p)
-
+    
     # filter user input  
     if user_message not in basics:
         filtered_arr=[]
@@ -118,6 +95,43 @@ def sample_responses(input_text):
                 datr =datr+ f'{product["Name"]}       {product["Price"]}        {product["Description"]}      {product["Quantity"]}        {product["Shop"]}\n'
             
             return str(datr)
+        filteredShop_arr=[]
+
+        # checking if the product name is in user massage
+        filtered_arr=[]
+        splitText=user_message.split()
+        for X in splitText:
+
+            if X in mother:
+                
+                filtered_arr.extend([p for p in data1 if p['Name'] ==X])
+
+            # for shop
+            if X in shopMother:
+                filteredShop_arr.extend([s for s in data1 if s['Shop'] ==X])
+            if shopMother:
+            shopd = 'this is '
+            dtr = 'products of this shop are \nName     quantity  price\n'
+
+            sortedShop=sorted(filteredShop_arr, key=lambda x: x['Shop'])
+            
+            for w in sortedShop:
+                shopd = shopd + f'{w["shop"]} located in {w["location"]} contact: {w["phoneNumber"]}'
+                dtr = dtr +  f'{w["Name"]}       {w["Quantity"]}       {w["Price"]}\n'
+
+            return (dtr)
+
+                # checking products for a given shop
+
+
+           
+            
+            print("filteredshop array is")
+            print(sortedShop)
+            
+
+            print("p name on shop")
+            # print(p)
 
 
         if not filtered_arr:
