@@ -17,6 +17,8 @@ def allshops():
 
     return sho
 
+    
+
 def dataStr():
     base_url = 'https://windowshoppingserver.herokuapp.com/product/All'
     data = requests.get(base_url).json()
@@ -33,7 +35,11 @@ mother=[]
 for X in data1:
     pname=X['Name']
     mother.append(pname)
-
+# for shops
+    shopMother =[]
+    for Y in data1:
+        shopName=Y['Shop']
+        shopMother.append(shopName)
 
 basics=["hello","hie","hy","sup","who","help","groceries"]
 
@@ -54,14 +60,34 @@ def sample_responses(input_text):
         if "groceries" in user_message:
             return (dataStr())
 
-    if 'shop' in user_message:
+    if 'shops' in user_message:
         return (allshops())
      
+    if shopMother:
+            shopd = 'this is '
+            dtr = 'products of this shop are \nName     quantity  price\n'
 
-    
-    # filter user input
-   
-        
+            sortedShop=sorted(filteredShop_arr, key=lambda x: x['Shop'])
+            
+            for w in sortedShop:
+                shopd = shopd + f'{w["shop"]} located in {w["location"]} contact: {w["phoneNumber"]}'
+                dtr = dtr +  f'{w["Name"]}       {w["Quantity"]}       {w["Price"]}\n'
+
+            msg.body(dtr)
+
+                # checking products for a given shop
+
+
+           
+            
+            print("filteredshop array is")
+            print(sortedShop)
+            
+
+            print("p name on shop")
+            # print(p)
+
+    # filter user input  
     if user_message not in basics:
         filtered_arr=[]
         splitText=user_message.split()
