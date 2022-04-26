@@ -17,8 +17,6 @@ def allshops():
 
     return sho
 
-    
-
 def dataStr():
     base_url = 'https://windowshoppingserver.herokuapp.com/product/All'
     data = requests.get(base_url).json()
@@ -35,11 +33,13 @@ mother=[]
 for X in data1:
     pname=X['Name']
     mother.append(pname)
+
 # for shops
-    shopMother =[]
-    for Y in data1:
-        shopName=Y['Shop']
-        shopMother.append(shopName)
+shopMother =[]
+for Y in data1:
+    shopName=Y['Shop']
+    shopMother.append(shopName)
+
 
 basics=["hello","hie","hy","sup","who","help","groceries"]
 
@@ -63,15 +63,22 @@ def sample_responses(input_text):
     if 'shops' in user_message:
         return (allshops())
      
+
     
-    # filter user input  
+    # filter user input
+   
+        
     if user_message not in basics:
+        filteredShop_arr=[]
+
         filtered_arr=[]
         splitText=user_message.split()
         for X in splitText:
         # r = requests.get('https://windowshoppingserver.herokuapp.com/product/All')
             if X in mother:
                 filtered_arr.extend([p for p in data1 if p['Name'] ==X])
+            if X in shopMother:
+                filteredShop_arr.extend([s for s in data1 if s['Shop'] ==X])
         #data1 = r.json()
         if filtered_arr:
             print("filtered array is")
@@ -95,44 +102,16 @@ def sample_responses(input_text):
                 datr =datr+ f'{product["Name"]}       {product["Price"]}        {product["Description"]}      {product["Quantity"]}        {product["Shop"]}\n'
             
             return str(datr)
-        filteredShop_arr=[]
-
-        # checking if the product name is in user massage
-        filtered_arr=[]
-        splitText=user_message.split()
-        for X in splitText:
-
-            if X in mother:
-                
-                filtered_arr.extend([p for p in data1 if p['Name'] ==X])
-
-            # for shop
-            if X in shopMother:
-                filteredShop_arr.extend([s for s in data1 if s['Shop'] ==X])
-            if shopMother:
-            shopd = 'this is '
-            dtr = 'products of this shop are \nName     quantity  price\n'
+        if filteredShop_arr:
+            dtr ='Name     quantity  price\n'
 
             sortedShop=sorted(filteredShop_arr, key=lambda x: x['Shop'])
             
             for w in sortedShop:
-                shopd = shopd + f'{w["shop"]} located in {w["location"]} contact: {w["phoneNumber"]}'
+        
                 dtr = dtr +  f'{w["Name"]}       {w["Quantity"]}       {w["Price"]}\n'
 
             return (dtr)
-
-                # checking products for a given shop
-
-
-           
-            
-            print("filteredshop array is")
-            print(sortedShop)
-            
-
-            print("p name on shop")
-            # print(p)
-
 
         if not filtered_arr:
              return str("Sorry, I didn't get what you have said! You can access the following services.\n 1.Available shops typing shops.\n 2.Available product by typing name of the product\n")
@@ -141,7 +120,7 @@ def sample_responses(input_text):
        
 
     else:
-        return str("Sorry, I didn't get what you have said! You can access the following services.\n 1.Available shops typing shops.\n 2.Available product by typing name of the product ")
+        return str("Sorry, what you are trying to find is not available \n\n ! You can access the following services.\n 1.Available shops typing shops.\n 2.Available product by typing name of the product\n 3. type shop name to access products in that shop\n 4. for help type 'help' ")
 
 
 

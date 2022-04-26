@@ -12,7 +12,7 @@ import Responses as Res
 print("Bot started.....")
 
 def start_command(update, context):
-    update.message.reply_text("Welcome to window shopping chatbot.\nGet information about products and services, their prices and the shops where they are available.\n   ")
+    update.message.reply_text("""Hi there ! am window shopping bot. How may I help you? \n\n! You can access the following services.\n 1.Available shops typing shops.\n 2.Available product by typing name of the product\n 3. type shop name to access products in that shop\n 4. for help type 'help'""")
 
 def help_command(update, context):
     update.message.reply_text('if you need help! You should ask for it on google')
