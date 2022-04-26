@@ -48,17 +48,17 @@ def sample_responses(input_text):
 
     if  user_message in basics:
         if user_message in ("hello","hie","hy","sup"):
-            return str("""Hi there ! am window shopping bot. How may I help you? \n\n1. To find out about the shops available reply to this massege with 'shop' \n\n2. To find out about the product you want  reply to this massege with 'NAME OF PRODUCT'""")
+            return str("""Hi there ! am window shopping bot. How may I help you? \n You can access the following services.\n 1.Available shops typing shops.\n 2.Available product by typing name of the product\n 3. type shop name to access products in that shop\n 4. for help type 'help'""")
         
         if "who" in user_message:
             return str('   I am being  created by Edward Ali and william Pharaoh ')
         
         if "help" in user_message:
 
-            return str('help Line \n 1.Search for the product by typing the NAME of product \n 2.Type GROCERIES to get all the latest available products \n 3.Type HELP to go to the help line menu')
+            return str('help Line \n  You can access the following services.\n 1.Available shops typing shops.\n 2.Available product by typing name of the product\n 3. type shop name to access products in that shop\n')
         
-        if "groceries" in user_message:
-            return (dataStr())
+        # if "groceries" in user_message:
+        #     return (dataStr())
 
     if 'shops' in user_message:
         return (allshops())
@@ -114,7 +114,7 @@ def sample_responses(input_text):
             return (dtr)
 
         if not filtered_arr:
-             return str("Sorry, I didn't get what you have said! You can access the following services.\n 1.Available shops typing shops.\n 2.Available product by typing name of the product\n")
+             return str("Sorry, what you are trying to find is not available \n You can access the following services.\n 1.Available shops typing shops.\n 2.Available product by typing name of the product\n 3. type shop name to access products in that shop\n 4. for help type 'help' ")
    
        
        
