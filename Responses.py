@@ -31,6 +31,7 @@ def dataStr():
 
     return dat
 
+# for products
 mother=[]
 for X in data1:
     pname=X['Name']
@@ -46,6 +47,7 @@ for Y in data1:
 basics=["hello","hie","hy","sup","who","help","groceries"]
 
 def sample_responses(input_text):
+    # get the message from the user 
     user_message = str(input_text).lower()
 
     if  user_message in basics:
