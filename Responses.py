@@ -3,10 +3,12 @@ from datetime import datetime
 from itertools import product
 import requests
 
+#getting all products from the api
 r = requests.get('https://windowshoppingserver.herokuapp.com/product/All')
 print(r)
 data1 = r.json()
 
+#function for getting all the shops
 def allshops():
     base_url = 'https://windowshoppingserver.herokuapp.com/shop/All'
     shop = requests.get(base_url).json()
